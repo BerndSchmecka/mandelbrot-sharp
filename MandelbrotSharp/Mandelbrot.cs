@@ -15,26 +15,25 @@ public class Mandelbrot
         {
             // Scale x to (-2, 1), zero is the center
             double real = (x - height) / (height / 2.0);
-            Parallel.For(0, height, y =>
+            for (int y = 0; y < height; y++)
             {
                 // Scale y to (-1, 1), zero is the center
                 double imaginary = (y - height / 2.0) / (height / 2.0);
-                Complex c = new Complex(real, imaginary);
-                Complex z = new Complex(0, 0);
-                int iterations = mandelbrot(z, c);
+                int iterations = mandelbrot(new Complex(real, imaginary));
 
                 var color = new Hsl(((iterations / 100.0f) * 360.0f), 1.0f, iterations < MAX_ITERATIONS ? 0.5f : 0);
                 var rgb = ColorSpaceConverter.ToRgb(color);
 
                 image[x, y] = new Rgba32(rgb.R, rgb.G, rgb.B);
-            });
+            }
         });
 
         image.Save("mandelbrot.png");
     }
 
-    private int mandelbrot(Complex z, Complex c)
+    private int mandelbrot(Complex c)
     {
+        Complex z = Complex.Zero();
         int iterations = 0;
         do
         {

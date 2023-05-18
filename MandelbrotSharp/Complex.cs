@@ -7,6 +7,10 @@ public class Complex {
         this.imaginary = imaginary;
     }
 
+    public static Complex Zero() {
+        return new Complex(0, 0);
+    }
+
     public static Complex operator +(Complex a, Complex b) {
         return new Complex(a.real + b.real, a.imaginary + b.imaginary);
     }

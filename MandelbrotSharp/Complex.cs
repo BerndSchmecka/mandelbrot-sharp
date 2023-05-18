@@ -19,6 +19,10 @@ public class Complex {
         return Math.Sqrt(real * real + imaginary * imaginary);
     }
 
+    public double magnitudeSquared() {
+        return real * real + imaginary * imaginary;
+    }
+
     public static Complex operator -(Complex a, Complex b) {
         return new Complex(a.real - b.real, a.imaginary - b.imaginary);
     }

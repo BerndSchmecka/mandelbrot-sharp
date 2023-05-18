@@ -1,0 +1,12 @@
+bin/
+obj/
+logs/
+TestResults/
+.vscode/
+cache/
+config.json
+lcov.info
+*.sqlite
+GitInfo.cs
+
+coverage.json

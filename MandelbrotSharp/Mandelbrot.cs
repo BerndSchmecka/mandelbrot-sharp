@@ -1,3 +1,4 @@
+using System.Numerics;
 using SixLabors.ImageSharp.ColorSpaces;
 using SixLabors.ImageSharp.ColorSpaces.Conversion;
 
@@ -33,13 +34,13 @@ public class Mandelbrot
 
     private int mandelbrot(Complex c)
     {
-        Complex z = Complex.Zero();
+        Complex z = Complex.Zero;
         int iterations = 0;
         do
         {
             z = z * z + c;
             iterations++;
-        } while (z.magnitudeSquared() < 1000000 && iterations < MAX_ITERATIONS); // |z| < 1000
+        } while (z.Magnitude < 1000 && iterations < MAX_ITERATIONS); // |z| < 1000
         return iterations;
     }
 }
